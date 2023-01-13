@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-
+const webpack = require('webpack')
 module.exports = {
   // 入口文件
   entry: path.join(__dirname,'../src/index.tsx') ,
@@ -42,6 +42,9 @@ module.exports = {
       template: path.resolve(__dirname,'../public/index.html'),
       // 方便起见，自动注入静态资源
       inject: true,
+    }),
+    new webpack.DefinePlugin({
+      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV)
     })
   ]
 }
