@@ -1,0 +1,12 @@
+{
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true
+}
