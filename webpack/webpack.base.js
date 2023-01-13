@@ -58,6 +58,19 @@ module.exports = {
             }
           }
         } ,'less-loader']
+      },
+      {
+        // 对于图片文件,webpack4使用file-loader和url-loader来处理的,但webpack5不使用这两个loader了,而是采用自带的asset-module来处理
+        test: /.(png|jpg|jpeg|gif|svg)$/,
+        type: 'asset',  
+        parser: {
+          dataUrlCondition: {
+            maxSize: 1024 * 10. // 小于10KB转base64位
+          }
+        },
+        generator:{ 
+          filename:'static/images/[name][ext]', // 文件输出目录和命名
+        },
       }
     ]
   },
@@ -70,6 +83,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       // 模板定义的html的模版
       template: path.resolve(__dirname,'../public/index.html'),
+      // 页面的标签的icon，名称也可以在这里设置
+      favicon: path.resolve(__dirname, '../assets/images/avatar.jpeg'),
       // 方便起见，自动注入静态资源
       inject: true,
     }),
