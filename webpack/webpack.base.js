@@ -34,7 +34,18 @@ module.exports = {
         // less-loader: 把less文件编译成css文件
         // css-loader: 解析css文件代码;
         // style-loader: 把解析后的css代码从js中抽离,放到头部的style标签中(在运行时做的)
-        use: ['style-loader','css-loader','less-loader']
+        use: ['style-loader','css-loader', {
+          // postcss-loader预处理css（比如压缩，添加前缀什么的）
+          // autoprefixer：添加前缀决定添加哪些浏览器前缀到css中
+          loader: 'postcss-loader',
+          // 也可以跟目录创建postcss.config.js来操作
+          options: {
+            postcssOptions: {
+              // 可以读取package.json里面的browsersList配置
+              plugins: ['autoprefixer']
+            }
+          }
+        } ,'less-loader']
       }
     ]
   },
