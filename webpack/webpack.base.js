@@ -28,13 +28,15 @@ module.exports = {
             presets: [
               //  babel 编译的预设,可以转换目前最新的js标准语法
               "@babel/preset-env",
-              {
-                // 配置使用core-js低版本, 使用低版本js语法模拟高版本的库,也就是垫片
-                "corejs":3,
-                // 根据配置的浏览器兼容,以及代码中使用到的api进行引入polyfill按需添加
-                "useBuiltIns": 'usage'
-              },
-              '@babel/preset-react','@babel/preset-typescript']
+              // {
+              //  // 设置兼容目标浏览器版本,这里可以不写,babel-loader会自动寻找上面配置好的文件.browserslistrc
+              //   // 根据配置的浏览器兼容,以及代码中使用到的api进行引入polyfill按需添加
+              //   "useBuiltIns": 'usage',
+              //   // 配置使用core-js低版本, 使用低版本js语法模拟高版本的库,也就是垫片
+              //   "corejs": 3,
+              // },
+              '@babel/preset-react'
+              ,'@babel/preset-typescript']
           }
         }
         
