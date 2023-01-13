@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
+
+const isDEV = process.env.NODE_ENV === 'development' // 
+
 module.exports = {
   // 入口文件
   entry: path.join(__dirname,'../src/index.tsx') ,
@@ -24,6 +27,10 @@ module.exports = {
           loader: 'babel-loader',
           // 配置也可以单独建babel.config.js
           options: {
+            plugins: [
+              isDEV && 'react-refresh/babel', // 如果是开发模式,就启动react热更新插件
+              // ...
+            ].filter(Boolean) ,
             // 预设顺序从后往前，先处理ts，再处理jsx
             presets: [
               //  babel 编译的预设,可以转换目前最新的js标准语法

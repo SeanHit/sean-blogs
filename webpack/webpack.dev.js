@@ -1,11 +1,15 @@
 const path = require('path')
 const {merge} = require('webpack-merge')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const baseWebpackConfig = require('./webpack.base')
 module.exports = merge(baseWebpackConfig, {
   // 开发模式
   mode: 'development',
   // TODO 源码调试模式
   devtool : 'eval-cheap-module-source-map',
+  plugins: [
+    new ReactRefreshWebpackPlugin(), // React热更新插件
+  ],
   devServer: {
     port:'4399',
     compress: false,
