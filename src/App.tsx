@@ -1,5 +1,6 @@
 import React from "react";
 import './app.css'
+import './app.less'
 export default function App() {
   return (
     <div className="content">

@@ -30,9 +30,11 @@ module.exports = {
         
       },
       {
-        test:/.css$/, // 匹配CSS文件
-        // css-loader: 解析css文件代码;style-loader: 把解析后的css代码从js中抽离,放到头部的style标签中(在运行时做的)
-        use: ['style-loader','css-loader']
+        test:/.(css|less)$/, // 匹配CSS文件
+        // less-loader: 把less文件编译成css文件
+        // css-loader: 解析css文件代码;
+        // style-loader: 把解析后的css代码从js中抽离,放到头部的style标签中(在运行时做的)
+        use: ['style-loader','css-loader','less-loader']
       }
     ]
   },
